@@ -1,0 +1,7 @@
+{
+  "name": "proyecto2-app",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "vue-vite"
+}

@@ -1,0 +1,15 @@
+# Ignorar archivos ocultos del sistema
+.DS_Store
+Thumbs.db
+
+# Ignorar configuraciones locales
+node_modules/
+dist/
+.env
+
+# Ignorar archivos de IDEs
+.idea/
+.vscode/
+
+# Ignorar dependencias de Python (si aplicable)
+__pycache__/
