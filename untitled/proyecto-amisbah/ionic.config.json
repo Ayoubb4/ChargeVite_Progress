@@ -1,7 +1,0 @@
-{
-  "name": "proyecto-amisbah",
-  "integrations": {
-    "capacitor": {}
-  },
-  "type": "angular-standalone"
-}
