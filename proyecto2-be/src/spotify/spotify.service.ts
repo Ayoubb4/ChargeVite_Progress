@@ -1,11 +1,9 @@
 import { Injectable, Logger } from '@nestjs/common';
+import { ConfigService } from '@nestjs/config'; // Importar ConfigService
 import axios from 'axios';
-import * as process from 'node:process';
-import 'dotenv/config';
 
 interface SpotifyTokenResponse {
   access_token: string;
-  token_type: string;
   expires_in: number;
 }
 
@@ -31,11 +29,18 @@ interface SpotifyArtistDetails {
 
 @Injectable()
 export class SpotifyService {
-  private readonly clientId = process.env.SPOTIFY_CLIENT_ID;
-  private readonly clientSecret = process.env.SPOTIFY_CLIENT_SECRET;
+  private readonly clientId: string;
+  private readonly clientSecret: string;
   private readonly logger = new Logger('SpotifyService');
   private accessToken = '';
   private accessTokenExpiryTime = 0;
+
+  constructor(private configService: ConfigService) {
+    this.clientId = this.configService.get<string>('SPOTIFY_CLIENT_ID')!;
+    this.clientSecret = this.configService.get<string>(
+      'SPOTIFY_CLIENT_SECRET',
+    )!;
+  }
 
   private async fetchAccessToken() {
     try {
