@@ -86,14 +86,14 @@ const formatReleaseType = (type) => {
   return types[type.toLowerCase()] || type;
 };
 
-const formatDate = (dateString) => {
-  try {
-    const options = { year: 'numeric', month: 'long', day: 'numeric' };
-    return new Date(dateString).toLocaleDateString('es-ES', options);
-  } catch (e) {
-    return dateString;
-  }
-};
+function formatDate(dateString) {
+  const options = {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  };
+  return new Date(dateString).toLocaleDateString('es-ES', options);
+}
 
 const fetchTopArtists = async () => {
   loading.value = true;
