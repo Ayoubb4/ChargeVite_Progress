@@ -21,7 +21,6 @@ onMounted(async () => {
 </template>
 
 <style scoped>
-/* Estilos generales */
 body {
   font-family: Arial, sans-serif;
   background-color: #121212;
@@ -30,7 +29,6 @@ body {
   padding: 0;
 }
 
-/* Barra de herramientas */
 .toolbar {
   background-color: #1db954;
   color: white;
@@ -39,26 +37,22 @@ body {
   padding: 10px;
 }
 
-/* Contenido */
 .content {
   background-color: #121212;
   color: white;
   padding: 20px;
 }
 
-/* Listado */
 .list {
   padding: 10px;
 }
 
 
-/* Títulos */
 label h2 {
   font-size: 18px;
   font-weight: bold;
 }
 
-/* Información de lanzamiento */
 .release-info {
   display: flex;
   align-items: center;
@@ -70,14 +64,12 @@ label h2 {
   font-weight: 500;
 }
 
-/* Fecha de lanzamiento */
 .release-date {
   font-size: 12px;
   color: #b3b3b3;
   margin-top: 0;
 }
 
-/* Tipo de lanzamiento */
 .release-type {
   background-color: rgba(29, 185, 84, 0.2);
   color: #1db954;
@@ -89,7 +81,6 @@ label h2 {
   justify-content: center;
 }
 
-/* Botones */
 .buttons-container {
   display: flex;
   flex-wrap: wrap;
