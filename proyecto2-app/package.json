@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "@ionic/vue": "^8.5.3",
     "i18next": "^24.2.3",
     "vue-i18next": "^0.9.4"
   }

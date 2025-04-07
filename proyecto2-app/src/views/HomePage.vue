@@ -68,6 +68,8 @@ import { ref, onMounted } from 'vue';
 import { useI18n } from 'vue-i18n';
 import api from "@/services/api.js";
 import {albumsOutline, personOutline} from "ionicons/icons";
+import { toastController } from '@ionic/vue';
+
 
 const { t } = useI18n();
 
@@ -109,13 +111,14 @@ const fetchTopArtists = async () => {
 };
 
 const presentToast = async (message) => {
-  const toast = await loadingController.create({
+  const toast = await toastController.create({
     message: message,
     duration: 2000,
     position: 'bottom'
   });
   await toast.present();
 };
+
 
 onMounted(() => {
   fetchTopArtists();
