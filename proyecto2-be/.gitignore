@@ -53,3 +53,4 @@ report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
 eslint.config.mjs
 nest-cli.json
 README.md
+.prettierrc
