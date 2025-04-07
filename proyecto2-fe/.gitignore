@@ -35,3 +35,6 @@ cypress/screenshots/
 
 # TypeScript build info
 *.tsbuildinfo
+
+#Not needed files
+package-lock.json
