@@ -12,11 +12,11 @@ async function bootstrap() {
   });
 
   const config = new DocumentBuilder()
-      .setTitle('Spotify API')
-      .setDescription('API para obtener información de Spotify')
-      .setVersion('1.0')
-      .addTag('spotify')
-      .build();
+    .setTitle('Spotify API')
+    .setDescription('API para obtener información de Spotify')
+    .setVersion('1.0')
+    .addTag('spotify')
+    .build();
 
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api', app, document);
