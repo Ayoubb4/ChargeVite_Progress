@@ -66,7 +66,7 @@ import {
 } from '@ionic/vue';
 import { ref, onMounted } from 'vue';
 import { useI18n } from 'vue-i18n';
-import api from "@/services/api.js";
+import api from "../services/api";
 import {albumsOutline, personOutline} from "ionicons/icons";
 import { toastController } from '@ionic/vue';
 

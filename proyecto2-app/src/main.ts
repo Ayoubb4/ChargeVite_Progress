@@ -49,9 +49,4 @@ const app = createApp(App)
 
 router.isReady().then(() => {
   app.mount('#app');
-<<<<<<< Updated upstream:proyecto2-app/src/main.ts
 });
-=======
-});
-
->>>>>>> Stashed changes:src/main.ts
