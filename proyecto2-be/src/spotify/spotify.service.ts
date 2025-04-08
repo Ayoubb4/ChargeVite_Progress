@@ -1,5 +1,5 @@
 import { Injectable, Logger } from '@nestjs/common';
-import { ConfigService } from '@nestjs/config'; // Importar ConfigService
+import { ConfigService } from '@nestjs/config';
 import axios from 'axios';
 
 interface SpotifyTokenResponse {
@@ -29,29 +29,24 @@ interface SpotifyArtistDetails {
 
 @Injectable()
 export class SpotifyService {
-  private readonly clientId: string;
-  private readonly clientSecret: string;
   private readonly logger = new Logger('SpotifyService');
   private accessToken = '';
   private accessTokenExpiryTime = 0;
 
-  constructor(private configService: ConfigService) {
-    this.clientId = this.configService.get<string>('SPOTIFY_CLIENT_ID')!;
-    this.clientSecret = this.configService.get<string>(
-      'SPOTIFY_CLIENT_SECRET',
-    )!;
-  }
+  constructor(private configService: ConfigService) {}
 
   private async fetchAccessToken() {
     try {
-      const response = await axios.post<SpotifyTokenResponse>(
+      const { data } = await axios.post<SpotifyTokenResponse>(
         'https://accounts.spotify.com/api/token',
         null,
         {
           params: {
             grant_type: 'client_credentials',
-            client_id: this.clientId,
-            client_secret: this.clientSecret,
+            client_id: this.configService.get<string>('SPOTIFY_CLIENT_ID')!,
+            client_secret: this.configService.get<string>(
+              'SPOTIFY_CLIENT_SECRET',
+            )!,
           },
           headers: {
             'Content-Type': 'application/x-www-form-urlencoded',
@@ -59,12 +54,9 @@ export class SpotifyService {
         },
       );
 
-      this.accessToken = response.data.access_token;
-      this.accessTokenExpiryTime =
-        Date.now() + (response.data.expires_in - 60) * 1000;
-
+      this.accessToken = data.access_token;
+      this.accessTokenExpiryTime = Date.now() + (data.expires_in - 60) * 1000;
       this.logger.log('Nuevo token de acceso obtenido');
-      this.logger.debug('Access Token:', this.accessToken);
     } catch (error) {
       this.logger.error('Error obteniendo el access token de Spotify:', error);
       throw new Error('No se pudo obtener el access token');
@@ -82,17 +74,15 @@ export class SpotifyService {
     try {
       const accessToken = await this.getValidAccessToken();
       const url = 'https://api.spotify.com/v1/browse/new-releases';
-
-      const response = await axios.get<SpotifyNewReleasesResponse>(url, {
+      const { data } = await axios.get<SpotifyNewReleasesResponse>(url, {
         headers: { Authorization: `Bearer ${accessToken}` },
       });
 
-      const albums = response.data.albums.items;
       const artists = await Promise.all(
-        albums.map(async (album) => {
+        data.albums.items.map(async (album) => {
           const artist = album.artists[0];
 
-          const artistDetails = await axios.get<SpotifyArtistDetails>(
+          const { data: artistDetails } = await axios.get<SpotifyArtistDetails>(
             `https://api.spotify.com/v1/artists/${artist.id}`,
             {
               headers: { Authorization: `Bearer ${accessToken}` },
@@ -103,8 +93,8 @@ export class SpotifyService {
             id: artist.id,
             name: artist.name,
             external_urls: artist.external_urls,
-            image: artistDetails.data.images.length
-              ? artistDetails.data.images[0].url
+            image: artistDetails.images.length
+              ? artistDetails.images[0].url
               : null,
             release: {
               id: album.id,
