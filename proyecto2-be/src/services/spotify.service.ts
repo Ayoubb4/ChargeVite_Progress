@@ -25,7 +25,9 @@ export class SpotifyService {
           params: {
             grant_type: 'client_credentials',
             client_id: this.configService.get<string>('SPOTIFY_CLIENT_ID')!,
-            client_secret: this.configService.get<string>('SPOTIFY_CLIENT_SECRET')!,
+            client_secret: this.configService.get<string>(
+              'SPOTIFY_CLIENT_SECRET',
+            )!,
           },
           headers: {
             'Content-Type': 'application/x-www-form-urlencoded',
@@ -58,7 +60,8 @@ export class SpotifyService {
       });
 
       const artists = await Promise.all(
-        data.albums.items.map(async (album: SpotifyAlbum) => { // Usamos la interfaz SpotifyAlbum
+        data.albums.items.map(async (album: SpotifyAlbum) => {
+          // Usamos la interfaz SpotifyAlbum
           const artist = album.artists[0];
 
           const { data: artistDetails } = await axios.get<SpotifyArtistDetails>(
@@ -72,7 +75,9 @@ export class SpotifyService {
             id: artist.id,
             name: artist.name,
             external_urls: artist.external_urls,
-            image: artistDetails.images.length ? artistDetails.images[0].url : null,
+            image: artistDetails.images.length
+              ? artistDetails.images[0].url
+              : null,
             release: {
               id: album.id,
               name: album.name,
