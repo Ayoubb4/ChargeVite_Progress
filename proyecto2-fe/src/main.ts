@@ -1,11 +1,16 @@
-import './assets/main.css'
-import { createApp } from 'vue'
-import App from './App.vue'
-import { createI18n } from 'vue-i18n'
+import './assets/main.css';
+import { createApp } from 'vue';
+import App from './App.vue';
+import { createI18n, I18n } from 'vue-i18n';
 
-const language = navigator.language.split('-')[0] || 'es';
+interface Messages {
+    es: Record<string, string>;
+    en: Record<string, string>;
+}
 
-const messages = {
+const language: string = navigator.language.split('-')[0] || 'es';
+
+const messages: Messages = {
     es: {
         loading: 'Cargando artistas...',
         topArtistsTitle: 'Top Artists',
@@ -26,12 +31,13 @@ const messages = {
     },
 };
 
-const i18n = createI18n({
+const i18n: I18n = createI18n({
     locale: language,
     messages,
 });
 
 const app = createApp(App);
+
 app.use(i18n);
 
 app.mount('#app');

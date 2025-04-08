@@ -2,8 +2,8 @@ import { Controller, Get } from '@nestjs/common';
 import { ApiTags, ApiOperation, ApiResponse } from '@nestjs/swagger';
 import { SpotifyService } from './spotify.service';
 
-@ApiTags('spotify')
-@Controller('spotify')
+@ApiTags('services')
+@Controller('services')
 export class SpotifyController {
   constructor(private readonly spotifyService: SpotifyService) {}
 

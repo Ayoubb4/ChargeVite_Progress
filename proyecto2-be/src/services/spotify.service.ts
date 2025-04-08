@@ -1,31 +1,12 @@
 import { Injectable, Logger } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import axios from 'axios';
-
-interface SpotifyTokenResponse {
-  access_token: string;
-  expires_in: number;
-}
-
-interface SpotifyAlbum {
-  id: string;
-  name: string;
-  album_type: string;
-  release_date: string;
-  images: { url: string }[];
-  external_urls: { [key: string]: string };
-  artists: { id: string; name: string; external_urls: string }[];
-}
-
-interface SpotifyNewReleasesResponse {
-  albums: {
-    items: SpotifyAlbum[];
-  };
-}
-
-interface SpotifyArtistDetails {
-  images: { url: string }[];
-}
+import {
+  SpotifyTokenResponse,
+  SpotifyAlbum,
+  SpotifyNewReleasesResponse,
+  SpotifyArtistDetails,
+} from 'src/interfaces/spotify.interfaces';
 
 @Injectable()
 export class SpotifyService {
@@ -44,9 +25,7 @@ export class SpotifyService {
           params: {
             grant_type: 'client_credentials',
             client_id: this.configService.get<string>('SPOTIFY_CLIENT_ID')!,
-            client_secret: this.configService.get<string>(
-              'SPOTIFY_CLIENT_SECRET',
-            )!,
+            client_secret: this.configService.get<string>('SPOTIFY_CLIENT_SECRET')!,
           },
           headers: {
             'Content-Type': 'application/x-www-form-urlencoded',
@@ -79,7 +58,7 @@ export class SpotifyService {
       });
 
       const artists = await Promise.all(
-        data.albums.items.map(async (album) => {
+        data.albums.items.map(async (album: SpotifyAlbum) => { // Usamos la interfaz SpotifyAlbum
           const artist = album.artists[0];
 
           const { data: artistDetails } = await axios.get<SpotifyArtistDetails>(
@@ -93,9 +72,7 @@ export class SpotifyService {
             id: artist.id,
             name: artist.name,
             external_urls: artist.external_urls,
-            image: artistDetails.images.length
-              ? artistDetails.images[0].url
-              : null,
+            image: artistDetails.images.length ? artistDetails.images[0].url : null,
             release: {
               id: album.id,
               name: album.name,

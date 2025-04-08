@@ -15,7 +15,7 @@ async function bootstrap() {
     .setTitle('Spotify API')
     .setDescription('API para obtener información de Spotify')
     .setVersion('1.0')
-    .addTag('spotify')
+    .addTag('services')
     .build();
 
   const document = SwaggerModule.createDocument(app, config);
