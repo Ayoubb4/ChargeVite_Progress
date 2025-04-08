@@ -7,8 +7,8 @@ async function bootstrap() {
 
   app.enableCors({
     origin: ['http://localhost:8080', 'http://localhost:8100'],
-    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-    allowedHeaders: 'Content-Type, Authorization',
+    methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
   });
 
   const config = new DocumentBuilder()
@@ -21,10 +21,11 @@ async function bootstrap() {
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api', app, document);
 
+  // Start the server
   await app.listen(3000);
 }
 
 bootstrap().catch((error) => {
-  console.error('Error during app bootstrap', error);
+  console.error('Error during app bootstrap:', error);
   process.exit(1);
 });
