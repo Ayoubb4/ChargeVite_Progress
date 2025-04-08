@@ -1,19 +1,11 @@
 <script setup lang="ts">
 import { defineProps, ref } from 'vue';
-
-interface Artist {
-  id: string;
-  name: string;
-  external_urls: {
-    spotify: string;
-  };
-}
+import type { ExternalUrls, ArtistImage, Artist } from '@/types/spotify';
 
 const props = defineProps<{
   artists: Artist[];
 }>();
 
-// Ref de imagen con el tipo adecuado
 const defaultImage = ref<string>('https://via.placeholder.com/50');
 </script>
 
@@ -21,8 +13,8 @@ const defaultImage = ref<string>('https://via.placeholder.com/50');
   <div>
     <h1>Top Artists</h1>
     <ul v-if="artists.length">
-      <li v-for="(artist, index) in artists" :key="artist.id">
-        <img :src="defaultImage.value" alt="Artist Image" width="50" height="50"/>
+      <li v-for="artist in artists" :key="artist.id">
+        <img :src="artist.images?.[0].url || defaultImage" alt="Artist Image" width="50" height="50" />
         <span>{{ artist.name }}</span>
         <a :href="artist.external_urls.spotify" target="_blank">Go to Spotify</a>
       </li>

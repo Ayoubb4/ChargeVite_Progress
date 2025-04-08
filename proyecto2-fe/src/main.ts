@@ -1,16 +1,11 @@
 import './assets/main.css';
 import { createApp } from 'vue';
 import App from './App.vue';
-import { createI18n, I18n } from 'vue-i18n';
+import { createI18n } from 'vue-i18n';
 
-interface Messages {
-    es: Record<string, string>;
-    en: Record<string, string>;
-}
+const language = navigator.language.split('-')[0] || 'es';
 
-const language: string = navigator.language.split('-')[0] || 'es';
-
-const messages: Messages = {
+const messages = {
     es: {
         loading: 'Cargando artistas...',
         topArtistsTitle: 'Top Artists',
@@ -31,7 +26,7 @@ const messages: Messages = {
     },
 };
 
-const i18n: I18n = createI18n({
+const i18n = createI18n({
     locale: language,
     messages,
 });

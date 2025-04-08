@@ -1,24 +1,32 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue';
-import { getBackendData } from '@/api/backend';
+import { getBackendData } from '@/apiData/server';
+import type { BackendResponse } from '@/types/backend';
 
 const backendData = ref<string>('');
+const errorMessage = ref<string | null>(null);
 
 onMounted(async () => {
   try {
-    const data = await getBackendData();
+    const data: BackendResponse = await getBackendData();
     backendData.value = data.message;
+    errorMessage.value = null;
   } catch (error) {
     console.error(error);
+    errorMessage.value = 'Hubo un error al cargar los datos del backend.';
   }
 });
 </script>
+
 <template>
   <div>
     <h1>Backend Data</h1>
-    <p>{{ backendData }}</p>
+    <p v-if="errorMessage" style="color: red;">{{ errorMessage }}</p>
+    <p v-else>{{ backendData }}</p>
   </div>
 </template>
+
+
 
 <style scoped>
 body {

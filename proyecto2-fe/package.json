@@ -2,12 +2,12 @@
   "name": "proyecto2-fe",
   "version": "0.0.0",
   "private": true,
-  "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview",
-    "serve": "vue-cli-service serve"
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "lint": "eslint --fix",
+    "preview": "vue-cli-service build && vue-cli-service serve",
+    "start": "webpack serve --mode development --open"
   },
   "dependencies": {
     "@capacitor/android": "^7.1.0",
@@ -16,14 +16,28 @@
     "@capacitor/ios": "^7.1.0",
     "axios": "^1.8.4",
     "vue": "^3.5.13",
-    "vue-i18n": "^11.1.3"
+    "vue-class-component": "^8.0.0-0",
+    "vue-i18n": "^12.0.0-alpha.2"
   },
   "devDependencies": {
     "@types/node": "^22.13.14",
-    "@vitejs/plugin-vue": "^5.2.1",
+    "@vitejs/plugin-vue": "^5.2.3",
+    "@vue/cli-plugin-typescript": "~5.0.0",
     "@vue/cli-service": "^5.0.8",
-    "typescript": "^5.8.2",
-    "vite": "^6.2.1",
-    "vite-plugin-vue-devtools": "^7.7.2"
-  }
+    "@vue/compiler-sfc": "^3.5.13",
+    "css-loader": "^7.1.2",
+    "eslint": "^8.0.0",
+    "eslint-plugin-vue": "^9.0.0",
+    "ts-loader": "^9.5.2",
+    "typescript": "^5.8.3",
+    "vite": "^6.2.5",
+    "vue-loader": "^17.4.2",
+    "vue-style-loader": "^4.1.3",
+    "vue-template-compiler": "^2.7.16",
+    "vue-tsc": "^2.2.8",
+    "webpack": "^5.99.2",
+    "webpack-cli": "^6.0.1",
+    "webpack-dev-server": "^5.2.1"
+  },
+  "type": "module"
 }

@@ -8,7 +8,7 @@ const loading = ref(false);
 const getTopArtists = async () => {
   loading.value = true;
   try {
-    const response = await axios.get('http://localhost:3000/spotify/top-artists');
+    const response = await axios.get('http://localhost:3000/services/top-artists');
     topArtists.value = response.data.artists;
   } catch (error) {
     console.error('Error al obtener los artistas', error);

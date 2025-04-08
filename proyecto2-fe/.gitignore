@@ -1,40 +1,41 @@
-# Logs
-logs
+#Archivos de log innecesarios
 *.log
 npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-pnpm-debug.log*
-lerna-debug.log*
 
-# Node modules
-node_modules
+#Dependencias - se instalan con npm install
+node_modules/
 
-# OS generated files
+#Archivos de build y cobertura
+dist/
+build/
+coverage/
+
+#Archivos del sistema operativo
 .DS_Store
+Thumbs.db
 
-# Build directories
-dist
-dist-ssr
-coverage
-
-# Local env files
+#Archivos locales
 *.local
+.env.local
+.env.*.local
 
-# Cypress files (if using Cypress)
+#Archivos específicos de Cypress
 cypress/videos/
 cypress/screenshots/
 
-# Editor directories and files
-.idea
+#WebStorm (JetBrains IDE)
+.idea/
+
+#Archivos temporales de editores
+*.swp
+*.swo
+
+#Archivos de configuración de VS/TypeScript que no se comparten
 *.suo
 *.ntvs*
 *.njsproj
 *.sln
-*.sw?
-
-# TypeScript build info
 *.tsbuildinfo
 
-#Not needed files
+#Lockfile
 package-lock.json
