@@ -49,9 +49,9 @@ Aplicación web construida con **Vue 3 + Vite** para el frontend y **NestJS** pa
 
 ### ▶️ Endpoint disponible
 
-| Método | Ruta                         | Descripción                                  |
-|--------|------------------------------|----------------------------------------------|
-| GET    | `/services/top-artists`      | Devuelve artistas destacados con lanzamientos recientes |
+| Método | Ruta                    | Descripción                                             |
+|--------|-------------------------|---------------------------------------------------------|
+| GET    | `/services/top-artists` | Devuelve artistas destacados con lanzamientos recientes |
 
 ### 🧠 Lógica destacada
 
@@ -148,5 +148,5 @@ Desarrollado con ❤️ por Ayoubb4
 ## 📃 Licencia
 
 Este proyecto está bajo la licencia MIT.
-s
+
 ---
