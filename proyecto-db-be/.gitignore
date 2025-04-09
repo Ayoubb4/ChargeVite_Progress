@@ -1,0 +1,42 @@
+# Node.js dependencies
+node_modules/
+
+# Compiled output (dist)
+dist/
+
+# Logs
+*.log
+npm-debug.log*
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Environment variable files
+.env
+.env.local
+.env.development.local
+.env.production.local
+.env.test.local
+
+# IDEs and editors (WebStorm, VSCode, etc.)
+.idea/
+
+# TypeScript build info
+*.tsbuildinfo
+
+# Runtime data
+pids/
+*.pid
+*.pid.lock
+*.seed
+
+# Temporary files
+*.tmp
+*.temp
+
+# Test coverage
+/coverage/
+
+# Debug reports
+report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
