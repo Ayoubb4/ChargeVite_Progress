@@ -40,5 +40,9 @@
     "webpack-cli": "^6.0.1",
     "webpack-dev-server": "^5.2.1"
   },
-  "type": "module"
+  "type": "module",
+  "exports": {
+    "import": "./dist/index.mjs",
+    "require": "./dist/index.cjs"
+  }
 }

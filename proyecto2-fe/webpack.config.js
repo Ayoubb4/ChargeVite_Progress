@@ -1,7 +1,7 @@
-const path = require('path');
-const { VueLoaderPlugin } = require('vue-loader');
+import path from 'path';
+import { VueLoaderPlugin } from 'vue-loader'; // Cambiado de require a import
 
-module.exports = {
+export default {
     entry: './src/main.ts',
     output: {
         filename: 'bundle.js',
@@ -23,7 +23,6 @@ module.exports = {
                 test: /\.ts$/,
                 loader: 'ts-loader',
                 options: {
-                    // Esto hace que ts-loader procese también los bloques TS en archivos .vue
                     appendTsSuffixTo: [/\.vue$/],
                 },
                 exclude: /node_modules/,
