@@ -6,7 +6,6 @@ const api = axios.create({
     baseURL: 'http://localhost:3000/',
 });
 
-// 📤 Interceptor de solicitud: Modifica antes de enviar
 api.interceptors.request.use(
     (config) => {
         console.log(`Enviando solicitud a: ${config.url}`);
@@ -22,7 +21,6 @@ api.interceptors.request.use(
     }
 );
 
-// 📥 Interceptor de respuesta: Maneja errores y datos antes de darlos
 api.interceptors.response.use(
     (response) => {
         console.log(`Respuesta recibida desde ${response.config.url}`, response.data);
@@ -42,7 +40,6 @@ api.interceptors.response.use(
     }
 );
 
-// Función para obtener datos del backend
 export const getBackendData = async (): Promise<BackendResponse> => {
     try {
         const response = await api.get<BackendResponse>('/data');
@@ -54,5 +51,4 @@ export const getBackendData = async (): Promise<BackendResponse> => {
     }
 };
 
-// 🔎 Usamos la función para que no quede sin utilizar
 getBackendData().then((data) => console.log(`Datos finales:`, data));
