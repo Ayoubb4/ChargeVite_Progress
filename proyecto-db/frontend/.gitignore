@@ -18,7 +18,7 @@ npm-debug.log*
 Thumbs.db
 
 # Archivos de IDE
-.idea/
+../.idea/
 *.suo
 *.ntvs*
 *.njsproj
