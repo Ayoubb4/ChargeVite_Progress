@@ -1,0 +1,39 @@
+# Dependencias
+/node_modules/
+
+# Archivos de compilación
+/dist
+/dist-ssr
+
+# Logs
+*.log
+npm-debug.log*
+
+# Archivos de configuración local
+*.local
+*.tsbuildinfo
+
+# Archivos del sistema
+.DS_Store
+Thumbs.db
+
+# Archivos de IDE
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Archivos de prueba
+/coverage/
+*.test.ts
+*.spec.ts
+
+# Archivos generados por Cypress (si usas Cypress para pruebas)
+.cypress/videos/
+.cypress/screenshots/
+
+# Archivos temporales
+*.tmp
+*.temp
