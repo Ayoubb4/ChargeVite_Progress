@@ -1,5 +1,5 @@
 # Dependencias
-/node_modules/
+node_modules/
 
 # Archivos de compilación
 /dist
@@ -12,13 +12,16 @@ npm-debug.log*
 # Archivos de configuración local
 *.local
 *.tsbuildinfo
+build/
+dist/
+
 
 # Archivos del sistema
 .DS_Store
 Thumbs.db
 
 # Archivos de IDE
-../.idea/
+.idea/
 *.suo
 *.ntvs*
 *.njsproj
