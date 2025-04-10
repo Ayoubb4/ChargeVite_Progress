@@ -6,7 +6,7 @@ axios.interceptors.request.use(
     (config) => {
         console.log(`Enviando solicitud a: ${config.url}`);
         // Se añade un encabezado personalizado, por ejemplo
-        config.headers["Custom-Header"] = "MiAplicación";
+        config.headers["Custom-Header"] = "SpotifyVue";
         return config;
     },
     (error) => {

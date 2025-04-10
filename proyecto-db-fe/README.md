@@ -1,45 +1,88 @@
-# proyecto-db-fe
+# 🎨 Proyecto Formulario Frontend
 
-This template should help get you started developing with Vue 3 in Vite.
+Este es el frontend del proyecto de formulario conectado a una API NestJS. Permite a los usuarios rellenar un formulario y enviar los datos al backend para ser guardados en una base de datos PostgreSQL.
 
-## Recommended IDE Setup
+---
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+## ⚙️ Tecnologías utilizadas
 
-## Type Support for `.vue` Imports in TS
+- [Vue 3](https://vuejs.org/)
+- [Vite](https://vitejs.dev/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Axios](https://axios-http.com/)
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
+---
 
-## Customize configuration
+## 📦 Instalación
 
-See [Vite Configuration Reference](https://vite.dev/config/).
+1. Clona el repositorio:
 
-## Project Setup
+   ```bash
+   git clone https://github.com/Ayoubb4/ChargeVite_Progress/tree/main/proyecto-db-fe
+   ```
 
-```sh
-npm install
-```
+2. Entra en la carpeta del proyecto:
 
-### Compile and Hot-Reload for Development
+   ```bash
+   cd proyecto-db-fe
+   ```
 
-```sh
+3. Instala las dependencias:
+
+   ```bash
+   npm install
+   ```
+
+---
+
+## 🚀 Ejecución del proyecto
+
+```bash
 npm run dev
 ```
 
-### Type-Check, Compile and Minify for Production
+La app estará disponible en [http://localhost:5173](http://localhost:5173)
 
-```sh
-npm run build
+---
+
+## 🧪 Estructura del proyecto
+
+```
+src/
+├── components/
+│   └── Formulario.vue
+├── App.vue
+└── main.ts
 ```
 
-### Run Unit Tests with [Vitest](https://vitest.dev/)
+---
 
-```sh
-npm run test:unit
-```
+## 📝 Funcionalidad
 
-### Lint with [ESLint](https://eslint.org/)
+- Formulario con campos: nombre, apellidos, correo, dirección.
+- Envío de datos al backend con Axios (`POST /formulario`).
+- Feedback visual tras el envío (mensaje de éxito o error).
+- Estilo responsivo y moderno con animaciones y gradientes.
 
-```sh
-npm run lint
-```
+---
+
+## ✅ Checklist
+
+- [x] Conexión con backend NestJS
+- [x] Estilos con CSS scoped
+- [x] Formulario funcional
+- [x] Animación con keyframes
+- [x] Separación en componentes
+
+---
+
+## 💡 Notas
+
+- Si usas alias `@` en imports, asegúrate de tener configurado `vite.config.ts` con `resolve.alias`.
+- Asegúrate de que el backend esté corriendo en `localhost:3000` o cambia el endpoint en `Formulario.vue`.
+
+---
+
+## 📄 Licencia
+
+MIT License

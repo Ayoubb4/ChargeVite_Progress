@@ -125,7 +125,7 @@ npm run serve
 
 En ambos entornos (frontend y backend), se usan interceptores para:
 
-- Loggear las URLs que se llaman.
+- Loggear las URL que se llaman.
 - Manejar errores como `401 Unauthorized`.
 - Añadir cabeceras automáticamente (`Authorization`, `Custom-Header`, etc).
 

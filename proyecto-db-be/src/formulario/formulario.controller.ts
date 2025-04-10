@@ -4,15 +4,15 @@ import { Formulario } from './formulario.entity';
 
 @Controller('formulario')
 export class FormularioController {
-    constructor(private servicio: FormularioService) {}
+  constructor(private servicio: FormularioService) {}
 
-    @Post()
-    create(@Body() datos: Formulario) {
-        return this.servicio.create(datos);
-    }
+  @Post()
+  create(@Body() datos: Formulario) {
+    return this.servicio.create(datos);
+  }
 
-    @Get()
-    getAll() {
-        return this.servicio.getAll();
-    }
+  @Get()
+  getAll() {
+    return this.servicio.getAll();
+  }
 }

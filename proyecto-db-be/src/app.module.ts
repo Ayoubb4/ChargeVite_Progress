@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { Formulario } from './formulario.entity';
-import { FormularioModule } from './formulario.module';
+import { Formulario } from './formulario/formulario.entity';
+import { FormularioModule } from './formulario/formulario.module';
 
 @Module({
   imports: [

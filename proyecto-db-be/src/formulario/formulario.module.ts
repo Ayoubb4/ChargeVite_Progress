@@ -5,8 +5,8 @@ import { FormularioService } from './formulario.service';
 import { FormularioController } from './formulario.controller';
 
 @Module({
-    imports: [TypeOrmModule.forFeature([Formulario])],
-    providers: [FormularioService],
-    controllers: [FormularioController],
+  imports: [TypeOrmModule.forFeature([Formulario])],
+  providers: [FormularioService],
+  controllers: [FormularioController],
 })
 export class FormularioModule {}
