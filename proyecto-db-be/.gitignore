@@ -40,3 +40,6 @@ pids/
 
 # Debug reports
 report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
+
+# Prevent committing lock file
+package-lock.json
