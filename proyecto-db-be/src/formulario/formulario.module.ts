@@ -1,12 +1,12 @@
 import { Module } from '@nestjs/common';
+import { FormularioController } from './formulario.controller';
+import { FormularioService } from './formulario.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Formulario } from './formulario.entity';
-import { FormularioService } from './formulario.service';
-import { FormularioController } from './formulario.controller';
 
 @Module({
   imports: [TypeOrmModule.forFeature([Formulario])],
-  providers: [FormularioService],
   controllers: [FormularioController],
+  providers: [FormularioService],
 })
 export class FormularioModule {}

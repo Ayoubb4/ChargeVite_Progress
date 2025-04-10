@@ -26,33 +26,55 @@ export default {
     }
   },
   methods: {
-    enviar() {
-      axios.post('http://localhost:3000/formulario', {
-        nombre: this.nombre,
-        apellidos: this.apellidos,
-        correo: this.correo,
-        direccion: this.direccion
-      })
-        .then(() => {
-          this.mensaje = 'Formulario enviado con éxito'
-          this.nombre = ''
-          this.apellidos = ''
-          this.correo = ''
-          this.direccion = ''
+    async verificarUsuario() {
+      try {
+        const response = await axios.get('http://localhost:3000/saludo', {
+          params: { correo: this.correo }
+        });
+
+        if (response.data.includes("Hola de nuevo")) {
+          this.mensaje = response.data;
+          return true;
+        } else {
+          this.mensaje = response.data;
+          return false;
+        }
+      } catch (error) {
+        this.mensaje = 'Error al verificar el usuario';
+        return false;
+      }
+    },
+
+    async enviar() {
+      const usuarioRegistrado = await this.verificarUsuario();
+
+      if (!usuarioRegistrado) {
+        axios.post('http://localhost:3000/formulario', {
+          nombre: this.nombre,
+          apellidos: this.apellidos,
+          correo: this.correo,
+          direccion: this.direccion
         })
-        .catch(() => {
-          this.mensaje = 'Error al enviar el formulario'
-        })
+          .then(() => {
+            this.mensaje = 'Formulario enviado con éxito'
+            this.nombre = ''
+            this.apellidos = ''
+            this.correo = ''
+            this.direccion = ''
+          })
+          .catch(() => {
+            this.mensaje = 'Error al enviar el formulario'
+          })
+      }
     }
   }
 }
 </script>
 
+
 <style scoped>
 .form-container {
-  max-width: 450px;
-  margin: 0 auto;
-  padding: 2rem;
+  padding: 50px;
   background: linear-gradient(135deg, #6a11cb, #2575fc);
   border-radius: 10px;
   box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
@@ -126,4 +148,5 @@ h1 {
 .mensaje.error {
   color: red;
 }
+
 </style>

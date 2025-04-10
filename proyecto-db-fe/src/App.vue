@@ -8,13 +8,10 @@
 import Formulario from "@/components/Formulario.vue";
 </script>
 
-<style scoped>
+<style>
 body {
-  margin: 0;
-  padding: 0;
   font-family: 'Arial', sans-serif;
-  background: #f4f4f4;
-  height: 100%;
+  background: linear-gradient(135deg, #6a11cb, #2575fc);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -23,24 +20,10 @@ body {
   font-family: 'Arial', sans-serif;
   background: linear-gradient(135deg, #6a11cb, #2575fc);
   min-height: 100vh;
-  min-width: 100vh;
+  min-width: 100vw;
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(50px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-#app {
   animation: fadeIn 1s ease-in-out;
 }
 </style>
